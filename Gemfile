@@ -1,13 +1,17 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
-
+gem "devise"
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
-gem "devise"
-gem 'postgres-pr'
+group :development do
+  gem 'mysql2'
+end
+
+group :production do
+  gem 'pg'
+end
 #gem "therubyracer", :require => 'v8'
 
 # Gems used only for assets and not required
