@@ -1,4 +1,4 @@
-1322756877
+1322757102
 Admin	/home/paris/rails/coming_up/app/models/admin.rb	class Admin 
 AdminController	/home/paris/rails/coming_up/app/controllers/admin_controller.rb	class AdminController 
 AdminControllerTest	/home/paris/rails/coming_up/test/functional/admin_controller_test.rb	class AdminControllerTest 
