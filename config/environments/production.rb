@@ -20,6 +20,9 @@ ComingUp::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
+  config.assets.precompile += %w( pages.js pages.css admin.css )
+  
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
