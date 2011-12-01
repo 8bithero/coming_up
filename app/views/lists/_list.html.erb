@@ -1,0 +1,16 @@
+<tr>
+  <td>
+    <%= list.title %>
+  </td>
+  <td>
+    <%= list.comments %>
+  </td>
+  <td>
+    <%= pluralize(list.run_time, 'min')%>
+  </td>
+  <td>
+    <%= link_to "Edit", edit_list_path(list.id) %>
+    <%= link_to "Delete", list, :method => :delete, :confirm => "You sure?",
+                                          :title => "Delete '#{list.title}'" %>
+  </td>
+</tr>

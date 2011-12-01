@@ -1,0 +1,102 @@
+<%= stylesheet_link_tag "admin" %>
+
+<div class="container">
+  <h1>Dashboard</h1><br /><br />
+
+  <div id="content">
+	  <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, :class => "flash #{key}") %>
+    <% end %>
+	</div>
+  
+  <% if @lists.first %>
+  <div id="countdown_in_dashboard">
+	  <div class="dash weeks_dash">
+		  <span class="dash_title">weeks</span>
+			<div class="digit">0</div>
+			<div class="digit">0</div>
+		</div>
+
+		<div class="dash days_dash">
+		  <span class="dash_title">days</span>
+			<div class="digit">0</div>
+			<div class="digit">0</div>
+		</div>
+
+		<div class="dash hours_dash">
+		  <span class="dash_title">hours</span>
+			<div class="digit">0</div>
+			<div class="digit">0</div>
+		</div>
+
+		<div class="dash minutes_dash">
+		  <span class="dash_title">minutes</span>
+			<div class="digit">0</div>
+			<div class="digit">0</div>
+		</div>
+
+		<div class="dash seconds_dash">
+		  <span class="dash_title">seconds</span>
+			<div class="digit">0</div>
+			<div class="digit">0</div>
+		</div>
+	</div>
+  <% end %>
+  
+  <% if @lists.first && @lists.first.end_time %>
+		  <script language="javascript" type="text/javascript">
+			  jQuery(document).ready(function() {
+				  $('#countdown_in_dashboard').countDown({
+					  targetDate: {
+						  'day':  <%= @lists.first.end_time.strftime("%d") %>,
+						  'month':<%= @lists.first.end_time.strftime("%m") %>,
+						  'year': <%= @lists.first.end_time.strftime("%Y") %>,
+						  'hour': <%= @lists.first.end_time.strftime("%H") %>,
+						  'min': 	<%= @lists.first.end_time.strftime("%M") %>,
+						  'sec': 	<%= @lists.first.end_time.strftime("%S") %>
+					  }
+				  });
+			  });
+		  </script>
+  <% end %>
+  <br />
+  
+  <% if @lists.first %>
+    <p>
+    <ul class="buttons">
+      <li>
+        <%= link_to("Start", {:controller => "lists", :action => "start_countdown"}, {:method => :post, :class => 'btn'})  %>
+      </li>
+      <li>
+        <%= link_to("Next", {:controller => "lists", :action => "next"}, {:method => :post, :class => 'btn'})  %>
+      </li>
+    </ul>
+    </p>
+
+    <br/><br/>
+    <p>
+    <table width=60% class="list_items" border="1">
+      <thead id="theader">
+        <tr>
+          <th width=30%>Title</th>
+          <th width=38%>Comments</th>
+          <th width=15%>Run Time</th>
+        </tr>
+      </thead>
+      <%= render @lists, :controller => 'lists', :action => 'index', :locals => {:list => @lists} %>
+    </table>
+    </p>
+    <br /><br /><br />
+    <h2>Add new item</h2><br/>
+  <% else %>
+    <h2>Create list item to begin</h2><br/>
+  <% end %>
+
+  <p>
+  <%= render 'lists/new' %>
+  </p>
+
+  <div id="debug">
+    <%= debug(params) if Rails.env.development? %>
+  </div>
+</div>
