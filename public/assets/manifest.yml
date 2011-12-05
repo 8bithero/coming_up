@@ -1,5 +1,9 @@
 ---
 bg.png: bg-dc45b92c38d5920f920fc52ee4283cd3.png
+bg_blue.png: bg_blue-c03b651239f1c317762e6b644fa97cb1.png
+bg_dark.png: bg_dark-6c2ef69d586e1dd3e50bcc3ea86bccf5.png
+bg_green.png: bg_green-88116e0f46ef2f16aee62fccec95393c.png
+bg_orange.png: bg_orange-dba3a7f0849a33e6c52eddff76b4e1c7.png
 button.png: button-422ad8e3fc7f67e952e4fb9174ee50d5.png
 ci_line.gif: ci_line-8b8215fa37b9d3d7da100da9849becd4.gif
 countdownGlowing.gif: countdownGlowing-704503a82995980282ba64de25e8a2e6.gif
@@ -14,5 +18,5 @@ dialog-cancel.png: dialog-cancel-b2882c14d7cd16cc357130fc3263339d.png
 edit.png: edit-1011e4c56c7282dc02010b70bdfc4ca7.png
 loading.gif: loading-d0a0f3eec9dc23082fee463088103bee.gif
 rails.png: rails-e4b51606cd77fda2615e7439907bfc92.png
-application.js: application-8c1f93b41ab0f5cb3a348e507c4185e7.js
+application.js: application-f6fee598ca420d542aa3aef458aa28db.js
 application.css: application-1c9609bc58b1e77c196de29021583379.css

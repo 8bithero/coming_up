@@ -4,9 +4,11 @@ html, body {
 	font-family: Tahoma;
 }
 
+html{ background-image:url('bg_dark.png'); background-attachment:fixed; }
+
 body {
 	text-align: center;
-	background-color: #2e2e2e;
+	
 }
 
 h1 {
@@ -31,80 +33,17 @@ h2.subtitle {
 	margin-left: 125px;
 }
 
-.dash {
-	width: 138px;
-	height: 96px;
-	background: transparent url('dash.png') 0 0 no-repeat;
-	float: left;
-	margin-left: 2px;
-	padding-left: 13px;
-	position: relative;
-	color: #333;
-}
-
-.weeks_dash {
-	background: transparent url('dark_weeks_dash.png') 0 0 no-repeat;
-}
-
-.days_dash {
-	background: transparent url('dark_days_dash.png') 0 0 no-repeat;
-}
-
-.hours_dash {
-	clear: left;
-	background: transparent url('dark_hours_dash.png') 0 0 no-repeat;
-}
-
-.minutes_dash {
-	background: transparent url('dark_minutes_dash.png') 0 0 no-repeat;
-}
-
-.seconds_dash {
-	background: transparent url('dark_seconds_dash.png') 0 0 no-repeat;
-}
-
-.dash .digit {
-	font: bold 52pt Verdana;
-	font-weight: bold;
-	float: left;
-	width: 59px;
-	text-align: center;
-	position: relative;
-}
-
-.dash_title {
-	display: none;
-}
-
-.dev_comment {
-	clear: left;
-	font-size: 14pt;
-	color: #fff;
-	text-align: center;
-	padding-top: 10px;
-	margin: 20px 10px;
-}
-
-#subscribe_form {
-	position: relative;
-}
-
-#email_field {
-	font-size: 16pt;
-	padding: 6px 10px;
-	width: 300px;
-}
-
-#subscribe_button {
-	font-size: 14pt;
-	color: #333;
-	padding: 4px 8px;
-}
-
-.copyright {
-	font-size: 9pt;
-	color: #333;
-	margin: 40px 0px;
+hr {
+  display:block;
+  position:relative;
+  height:0px;
+  line-height:0px;
+  border:0;
+  border-top:1px solid #e5e5e5;
+  border-bottom:1px solid #f9f9f9;
+  margin:16px 0;
+  padding:0;
+  clear:both;
 }
 
 .faded {
@@ -138,4 +77,81 @@ h2.subtitle {
 	position: absolute;
 	width: 100%;
 	top: 60px;
+}
+
+#fancyCountdown { 
+  width:600px;
+  height:200px;
+  margin:auto;
+  border: 1px solid black;
+}
+
+.clock{
+	/* The .clock div. Created dynamically by jQuery */
+	background-color:#252525;
+	height:200px;
+	width:200px;
+	position:relative;
+	overflow:hidden;
+	float:left;
+}
+
+.clock .rotate{
+	/* There are two .rotate divs - one for each half of the background */
+	position:absolute;
+	width:200px;
+	height:200px;
+	top:0;
+	left:0;
+}
+
+.rotate.right{
+	display:none;
+	z-index:11;
+}
+
+.clock .bg, .clock .front{
+	width:100px;
+	height:200px;
+	background-color:#252525;
+	position:absolute;
+	top:0;
+}
+
+.clock .display{
+	/* Holds the number of seconds, minutes or hours respectfully */
+	position:absolute;
+	width:200px;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	z-index:20;
+	color:#F5F5F5;
+	font-size:60px;
+	text-align:center;
+	top:65px;
+	left:0;
+	
+	/* CSS3 text shadow: */
+	text-shadow:4px 4px 5px #333333;
+}
+
+/* The left part of the background: */
+
+.clock .bg.left{ left:0; }
+
+/* Individual styles for each color: */
+.orange .bg.left{ background:url(bg_orange.png) no-repeat left top; }
+.green .bg.left{ background:url(bg_green.png) no-repeat left top; }
+.blue .bg.left{	background:url(bg_blue.png) no-repeat left top; }
+
+/* The right part of the background: */
+.clock .bg.right{ left:100px; }
+
+.orange .bg.right{ background:url(bg_orange.png) no-repeat right top; }
+.green .bg.right{ background:url(bg_green.png) no-repeat right top; }
+.blue .bg.right{ background:url(bg_blue.png) no-repeat right top; }
+
+
+.clock .front.left{
+	left:0;
+	z-index:10;
 }

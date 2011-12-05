@@ -8,6 +8,7 @@ ComingUp::Application.routes.draw do
 
   post "lists/next"
   post "lists/start_countdown"
+  post "lists/stop_countdown"
   #get "lists/new"
   resources :lists
 

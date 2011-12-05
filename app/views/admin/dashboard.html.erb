@@ -65,7 +65,11 @@
     <p>
     <ul class="buttons">
       <li>
-        <%= link_to("Start", {:controller => "lists", :action => "start_countdown"}, {:method => :post, :class => 'btn'})  %>
+        <% if counter_is_active?(@lists.first) %>
+          <%= link_to("Stop", {:controller => "lists", :action => "stop_countdown"}, {:method => :post, :class => 'btn'})  %>
+        <% else %>
+          <%= link_to("Start", {:controller => "lists", :action => "start_countdown"}, {:method => :post, :class => 'btn'})  %>
+        <% end %>
       </li>
       <li>
         <%= link_to("Next", {:controller => "lists", :action => "next"}, {:method => :post, :class => 'btn'})  %>

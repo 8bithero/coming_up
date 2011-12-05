@@ -72,6 +72,22 @@ class ListsController < ApplicationController
     end
   end
 
+  def stop_countdown
+    if @list = List.first
+      @list.current_time = nil
+      @list.end_time = nil
+
+      if @list.save
+        flash[:success] = "Stopped: #{@list.title}"
+        redirect_to :controller => 'admin', :action => 'dashboard'
+      end
+    
+    else
+      flash[:error] = "There is no item in the list."
+      redirect_to :controller => 'admin', :action => 'dashboard'
+    end
+  end
+
   def next
     if @list = List.first
     #@list.update_attribute(@list.current_time, Time.now)
