@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag "admin" %>
-
+<%= javascript_include_tag "jquery.lwtCountdown-1.0" %>
 <div class="container">
   <h1>Dashboard</h1><br /><br />
 
@@ -10,37 +10,37 @@
 	</div>
   
   <% if @lists.first %>
-  <div id="countdown_in_dashboard">
-	  <div class="dash weeks_dash">
-		  <span class="dash_title">weeks</span>
-			<div class="digit">0</div>
-			<div class="digit">0</div>
-		</div>
+    <div id="countdown_in_dashboard">
+  	  <div class="dash weeks_dash">
+  		  <span class="dash_title">weeks</span>
+  			<div class="digit">0</div>
+  			<div class="digit">0</div>
+  		</div>
 
-		<div class="dash days_dash">
-		  <span class="dash_title">days</span>
-			<div class="digit">0</div>
-			<div class="digit">0</div>
-		</div>
+  		<div class="dash days_dash">
+  		  <span class="dash_title">days</span>
+  			<div class="digit">0</div>
+  			<div class="digit">0</div>
+  		</div>
 
-		<div class="dash hours_dash">
-		  <span class="dash_title">hours</span>
-			<div class="digit">0</div>
-			<div class="digit">0</div>
-		</div>
+  		<div class="dash hours_dash">
+  		  <span class="dash_title">hours</span>
+  			<div class="digit">0</div>
+  			<div class="digit">0</div>
+  		</div>
 
-		<div class="dash minutes_dash">
-		  <span class="dash_title">minutes</span>
-			<div class="digit">0</div>
-			<div class="digit">0</div>
-		</div>
+  		<div class="dash minutes_dash">
+  		  <span class="dash_title">minutes</span>
+  			<div class="digit">0</div>
+  			<div class="digit">0</div>
+  		</div>
 
-		<div class="dash seconds_dash">
-		  <span class="dash_title">seconds</span>
-			<div class="digit">0</div>
-			<div class="digit">0</div>
-		</div>
-	</div>
+  		<div class="dash seconds_dash">
+  		  <span class="dash_title">seconds</span>
+  			<div class="digit">0</div>
+  			<div class="digit">0</div>
+  		</div>
+  	</div>
   <% end %>
   
   <% if @lists.first && @lists.first.end_time %>
@@ -59,37 +59,39 @@
 			  });
 		  </script>
   <% end %>
+
   <br />
   
   <% if @lists.first %>
     <p>
-    <ul class="buttons">
-      <li>
-        <% if counter_is_active?(@lists.first) %>
-          <%= link_to("Stop", {:controller => "lists", :action => "stop_countdown"}, {:method => :post, :class => 'btn'})  %>
-        <% else %>
-          <%= link_to("Start", {:controller => "lists", :action => "start_countdown"}, {:method => :post, :class => 'btn'})  %>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to("Next", {:controller => "lists", :action => "next"}, {:method => :post, :class => 'btn'})  %>
-      </li>
-    </ul>
+      <ul class="buttons">
+        <li>
+          <% if counter_is_active?(@lists.first) %>
+            <%= link_to("Stop", {:controller => "lists", :action => "stop_countdown"}, {:method => :post, :class => 'btn'})  %>
+          <% else %>
+            <%= link_to("Start", {:controller => "lists", :action => "start_countdown"}, {:method => :post, :class => 'btn'})  %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to("Next", {:controller => "lists", :action => "next"}, {:method => :post, :class => 'btn'})  %>
+        </li>
+      </ul>
     </p>
 
     <br/><br/>
     <p>
-    <table width=60% class="list_items" border="1">
-      <thead id="theader">
-        <tr>
-          <th width=30%>Title</th>
-          <th width=38%>Comments</th>
-          <th width=15%>Run Time</th>
-        </tr>
-      </thead>
-      <%= render @lists, :controller => 'lists', :action => 'index', :locals => {:list => @lists} %>
-    </table>
+      <table width=60% class="list_items" border="1">
+        <thead id="theader">
+          <tr>
+            <th width=30%>Title</th>
+            <th width=38%>Comments</th>
+            <th width=15%>Run Time</th>
+          </tr>
+        </thead>
+        <%= render @lists, :controller => 'lists', :action => 'index', :locals => {:list => @lists} %>
+      </table>
     </p>
+
     <br /><br /><br />
     <h2>Add new item</h2><br/>
   <% else %>
@@ -102,5 +104,7 @@
 
   <div id="debug">
     <%= debug(params) if Rails.env.development? %>
+    <br /> -------------- <br />
+    <%= debug(assigns) if Rails.env.development? %>
   </div>
 </div>

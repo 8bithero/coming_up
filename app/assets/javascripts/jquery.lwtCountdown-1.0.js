@@ -129,7 +129,7 @@
 
 	$.fn.dashChangeTo = function(id, dash, n, duration) {
 		  $this = $('#' + id);
-
+      //alert(duration);
 		  for (var i=($this.find('.' + dash + ' .digit').length-1); i>=0; i--)
 		  {
 				var d = n%10;

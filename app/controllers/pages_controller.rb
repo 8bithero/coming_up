@@ -1,12 +1,6 @@
 class PagesController < ApplicationController
   def home
     @list_item = List.first
+    @lists = List.all
   end
-
-#  def dashboard
-#    @lists = List.all
-#    @list = List.new
-#    @the_time = Hash.new
-#  end
-
 end

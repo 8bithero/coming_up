@@ -1,21 +1,17 @@
 <%= stylesheet_link_tag "pages" %>
+<%= javascript_include_tag "jquery.tzCountdown" %>
 
 <div id="container">
 
 		<h1>
-		  <% if @list_item %>
-		    <%= @list_item.title %>
+		  <% if @list_item && @list_item.end_time %>
+		    <h1><%= @list_item.title %></h1>
+        <h2 class="subtitle"><%= @list_item.comments %></h2>
 		  <% else %>
-		    No Printing
+		    <h1>No Printing</h1>
+        <h2 class="subtitle">Stay tuned...</h2>
 		  <% end %>
-		</h1>
-		<h2 class="subtitle">
-		<% if @list_item %>
-		  <%= @list_item.comments %>
-		<% else %>
-		  Stay tuned...
-		<% end %>
-		</h2>
+		
 
 		<!-- Countdown dashboard start -->
 		<div id="fancyCountdown"></div>
@@ -23,11 +19,36 @@
 		<!-- Countdown dashboard end -->
 <hr>
 
+<div id="next_up">
+
+    <br/><br/>
+    <p>
+    <h2 text-align:"left">Up next...</h2>
+    </p>
+    <p>
+    <table width=60% class="home_list_items" border="1">
+      <thead id="theader">
+        <tr>
+          <th width=30%>Title</th>
+          <th width=38%>Comments</th>
+        </tr>
+      </thead>
+      <tr>
+      <% @lists.each do |f| %>
+        <td><%=f.title %></td>
+        <td><%=f.comments %></td>
+      <% end %>
+      </tr>
+    </table>
+    </p>
+
+</div>
+
 
     <% if @list_item && @list_item.end_time %>
 		  <script language="javascript" type="text/javascript">
 			  jQuery(document).ready(function() {
-				  $('#fancyCountdown').countDown({
+				  $('#fancyCountdown').homeCountDown({
 					  targetDate: {
 						  'day':  <%= @list_item.end_time.strftime("%d") %>,
 						  'month':<%= @list_item.end_time.strftime("%m") %>,
@@ -39,7 +60,23 @@
 				  });
 			  });
 		  </script>
+    
+    <% else %>
 
+      <script language="javascript" type="text/javascript">
+        jQuery(document).ready(function() {
+          $('#fancyCountdown').homeCountDown({
+            targetDate: {
+              'day':  0,
+              'month': 0,
+              'year': 0,
+              'hour': 0,
+              'min':  0,
+              'sec':  0
+            }
+          });
+        });
+      </script>
 		<% end %>
 
 	</div>

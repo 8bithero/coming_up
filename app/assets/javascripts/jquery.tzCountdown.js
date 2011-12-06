@@ -18,7 +18,7 @@
     var gVars = {};
 
     // Extending the jQuery core:
-    $.fn.countDown = function (options) {
+    $.fn.homeCountDown = function (options) {
     
                 
         config = {};
